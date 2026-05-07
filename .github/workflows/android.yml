@@ -1,46 +1,54 @@
 name: Build Android Bundle
+
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:   # manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: set up JDK 17
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci   # or npm install
+
+      - name: Set up Java (required for Android build)
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17'
 
-      - name: Setup and Build
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 11076708   # latest
+
+      - name: Sync Capacitor project
+        run: npx cap sync android
+
+      - name: Copy web assets to Android
+        run: npx cap copy android
+
+      - name: Build Android Bundle (AAB)
         run: |
-          # 1. Folder check karna
-          ls -R
-          
-          # 2. Capacitor install karna (Global level par)
-          npm install -g @capacitor/cli
-          
-          # 3. Folder ke andar ja kar kaam shuru karna
-          cd "Al-Mumin-Guide__"
-          
-          # 4. Zaroori files install karna
-          npm install @capacitor/core @capacitor/android
-          
-          # 5. Android project initialize karna
-          npx cap init "Al Mumin Guide" com.gsons.mumin --web-dir .
-          npx cap add android || true
-          npx cap sync android
-          
-          # 6. Bundle (.aab) banana
           cd android
           chmod +x gradlew
           ./gradlew bundleRelease
 
-      - name: Upload .aab Artifact
+      - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-bundle
-          path: "**/app-release.aab"
+          name: app-release.aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
