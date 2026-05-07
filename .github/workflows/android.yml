@@ -15,22 +15,22 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Node Project & Capacitor
+      - name: Force Create Package and Build
         run: |
           cd "Al-Mumin-Guide__"
-          # 1. package.json agar nahi hai to bana do
-          if [ ! -f package.json ]; then
-            npm init -y
-          fi
-          # 2. Capacitor install karo (Deepseek ki advice)
+          
+          # 1. Zabardasti package.json banana
+          npm init -y
+          
+          # 2. Capacitor aur Android dependencies install karna
           npm install @capacitor/core @capacitor/cli @capacitor/android
-          # 3. Project initialize karo
+          
+          # 3. Project setup
           npx cap init "Al Mumin Guide" com.gsons.mumin --web-dir .
-          # 4. Android platform add aur sync karo
           npx cap add android || true
           npx cap sync android
           
-          # 5. Final Build
+          # 4. Final Compilation
           cd android
           chmod +x gradlew
           ./gradlew bundleRelease
