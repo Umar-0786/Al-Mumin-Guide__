@@ -1,0 +1,6 @@
+{
+  "appId": "com.gsons.mumin",
+  "appName": "Al Mumin Guide",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
