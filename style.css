@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #0A3B2E 0%, #0F4C3A 100%);
+  font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+  color: #F9F6E0;
+  padding: 0 0 20px 0;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(10, 59, 46, 0.85);
+  backdrop-filter: blur(2px);
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.header {
+  background: #0B3B2E;
+  padding: 20px 20px 16px;
+  text-align: center;
+  border-bottom: 3px solid #D4AF37;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #F9E0A0, #D4AF37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.header p {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 6px;
+  color: #E0D6B0;
+}
+
+.lang-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  gap: 12px;
+}
+
+.lang-btn {
+  background: #1C5E4A;
+  border: 1px solid #D4AF37;
+  color: #F9E6CF;
+  padding: 6px 16px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background: #D4AF37;
+  color: #0A3B2E;
+  border-color: #F9E6CF;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
+}
+
+.home-btn {
+  background: #2E6B58;
+  border: none;
+  color: #F9E6CF;
+  padding: 6px 18px;
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin: 12px 20px 0 auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.home-btn:hover {
+  background: #D4AF37;
+  color: #0A3B2E;
+}
+
+.content {
+  padding: 1.8rem 1.2rem;
+  min-height: 65vh;
+}
+
+.card {
+  background: #FFFFFF10;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 248, 225, 0.08);
+  border-radius: 28px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  transition: 0.2s;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.arabic-text {
+  font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: right;
+  direction: rtl;
+  color: #F9E6CF;
+  margin-bottom: 12px;
+  word-break: break-word;
+  font-weight: 500;
+}
+
+.translation-text {
+  font-size: 1rem;
+  color: #F0E5C6;
+  border-top: 1px dashed #D4AF37;
+  padding-top: 10px;
+  margin-top: 8px;
+}
+
+.step-item {
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #D4AF37;
+  padding-left: 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 0 20px 20px 0;
+  padding: 1rem;
+}
+
+.step-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #FADB67;
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  opacity: 0.92;
+}
+
+.btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.nav-btn {
+  background: #1D5B48;
+  border: 1px solid #D4AF37;
+  padding: 14px 22px;
+  border-radius: 60px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #FEF5E0;
+  cursor: pointer;
+  flex: 1 0 140px;
+  text-align: center;
+  transition: all 0.2s;
+  box-shadow: 0 5px 0 #0A2E24;
+}
+
+.nav-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #0A2E24;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-left: 8px solid #D4AF37;
+  padding-left: 15px;
+  margin: 20px 0 18px 0;
+  color: #FFE7A3;
+}
+
+.reference {
+  font-size: 0.7rem;
+  color: #CBB96E;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.janaza-option-btn {
+  background: #2E6B58;
+  border: 1px solid #D4AF37;
+  padding: 12px 20px;
+  border-radius: 60px;
+  font-weight: bold;
+  color: #FFE7A3;
+  margin: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.janaza-option-btn.active {
+  background: #D4AF37;
+  color: #0A3B2E;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 16px;
+  border-top: 1px solid #D4AF3740;
+  color: #CBB96E;
+}
+
+.ad-container {
+  background: #082B21;
+  margin: 12px 20px;
+  border-radius: 20px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #D4AF3766;
+  font-size: 0.7rem;
+  color: #b5aa7a;
+}
