@@ -15,15 +15,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Install Dependencies
+        run: npm install
+
       - name: Initialize Capacitor
         run: |
-          npm install @capacitor/core @capacitor/cli @capacitor/android
           npx cap init "Al Mumin Guide" com.gsons.mumin --web-dir .
           npx cap add android
-          npx cap copy android
 
       - name: Build App Bundle
         run: |
+          npx cap copy android
           cd android
           ./gradlew bundleRelease
 
