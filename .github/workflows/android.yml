@@ -15,14 +15,26 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Hum folder ke andar ja kar sab setup karenge
-      - name: Install and Build
+      - name: Setup and Build
         run: |
+          # 1. Folder check karna
+          ls -R
+          
+          # 2. Capacitor install karna (Global level par)
+          npm install -g @capacitor/cli
+          
+          # 3. Folder ke andar ja kar kaam shuru karna
           cd "Al-Mumin-Guide__"
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+          
+          # 4. Zaroori files install karna
+          npm install @capacitor/core @capacitor/android
+          
+          # 5. Android project initialize karna
           npx cap init "Al Mumin Guide" com.gsons.mumin --web-dir .
-          npx cap add android
+          npx cap add android || true
           npx cap sync android
+          
+          # 6. Bundle (.aab) banana
           cd android
           chmod +x gradlew
           ./gradlew bundleRelease
@@ -31,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-bundle
-          path: Al-Mumin-Guide__/android/app/build/outputs/bundle/release/app-release.aab
+          path: "**/app-release.aab"
