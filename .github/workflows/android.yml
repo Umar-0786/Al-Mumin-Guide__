@@ -16,17 +16,16 @@ jobs:
           distribution: 'temurin'
 
       - name: Install Dependencies
-        run: npm install
-
-      - name: Initialize Capacitor
         run: |
-          npx cap init "Al Mumin Guide" com.gsons.mumin --web-dir .
-          npx cap add android
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npm install
 
-      - name: Build App Bundle
+      - name: Build Android Project
         run: |
-          npx cap copy android
+          npx cap add android || true
+          npx cap sync android
           cd android
+          chmod +x gradlew
           ./gradlew bundleRelease
 
       - name: Upload .aab Artifact
